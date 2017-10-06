@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
 
         WebView webView = (WebView) findViewById(R.id.wv_main);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://store.csmall.com/hz001");
+        webView.loadUrl("https://carlottery.duapp.com");
     }
 
     @Override
