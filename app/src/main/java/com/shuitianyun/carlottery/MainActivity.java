@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.CookieManager;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -87,8 +89,26 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_index) {
-            return true;
+        switch (id){
+            case R.id.action_index:
+                webView.loadUrl("https://carlottery.duapp.com");
+                return true;
+            case R.id.action_refresh:
+                webView.reload();
+                return true;
+            case R.id.action_clean:
+                //好像没啥用
+                webView.clearCache(true);
+
+                //这个可以移除cookie
+                CookieManager cookieManager = CookieManager.getInstance();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    cookieManager.removeAllCookies(null);
+                }else{
+                    cookieManager.removeAllCookie();
+                }
+                webView.loadUrl("https://carlottery.duapp.com");
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
