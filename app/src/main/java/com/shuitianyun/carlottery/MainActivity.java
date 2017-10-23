@@ -48,14 +48,24 @@ public class MainActivity extends AppCompatActivity
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                view.loadUrl(request.getUrl().toString());
-                return true;
+                String s = request.getUrl().toString();
+                if(s.contains("request.getUrl().toString()") || s.contains("shuitianyun.com")){
+                    view.loadUrl(s);
+                    return true;
+                }else{
+                    return false;
+                }
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
+                String s = url;
+                if(s.contains("request.getUrl().toString()") || s.contains("shuitianyun.com")){
+                    view.loadUrl(s);
+                    return true;
+                }else{
+                    return false;
+                }
             }
         });
 
