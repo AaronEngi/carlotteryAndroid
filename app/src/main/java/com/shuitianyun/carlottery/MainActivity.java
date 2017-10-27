@@ -23,6 +23,8 @@ import android.webkit.WebViewClient;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String URL_HOME = "http://yaohao.bceapp.com";
+
     WebView webView;
 
     @Override
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        webView.loadUrl("https://carlottery.duapp.com");
+        webView.loadUrl(URL_HOME);
     }
 
     @Override
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         switch (id){
             case R.id.action_index:
-                webView.loadUrl("https://carlottery.duapp.com");
+                webView.loadUrl(URL_HOME);
                 return true;
             case R.id.action_refresh:
                 webView.reload();
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity
                 }else{
                     cookieManager.removeAllCookie();
                 }
-                webView.loadUrl("https://carlottery.duapp.com");
+                webView.loadUrl(URL_HOME);
                 return true;
         }
 
