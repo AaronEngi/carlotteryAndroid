@@ -20,6 +20,8 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.tencent.bugly.Bugly;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        CrashReport.initCrashReport(getApplicationContext());
+        Bugly.init(getApplicationContext(), "525be7234c", false);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 String s = request.getUrl().toString();
-                if(s.contains("request.getUrl().toString()") || s.contains("shuitianyun.com")){
+                if(s.contains("yaohao.bceapp.com") || s.contains("shuitianyun.com")){
                     view.loadUrl(s);
                     return true;
                 }else{
