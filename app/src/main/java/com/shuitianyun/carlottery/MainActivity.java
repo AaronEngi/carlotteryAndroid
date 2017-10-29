@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 String s = url;
-                if(s.contains("request.getUrl().toString()") || s.contains("shuitianyun.com")){
+                if(s.contains("yaohao.bceapp.com") || s.contains("shuitianyun.com")){
                     view.loadUrl(s);
                     return true;
                 }else{
