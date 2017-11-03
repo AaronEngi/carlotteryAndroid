@@ -1,6 +1,7 @@
 package com.shuitianyun.carlottery;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +26,7 @@ import com.tencent.bugly.Bugly;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String URL_HOME = "http://yaohao.bceapp.com";
+    private static final String URL_HOME = "http://carlottery.shuitianyun.com";
 
     WebView webView;
 
@@ -56,12 +57,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 String s = request.getUrl().toString();
-                if(s.contains("yaohao.bceapp.com") || s.contains("shuitianyun.com")){
-                    view.loadUrl(s);
-                    return true;
-                }else{
-                    return false;
-                }
+                return shouldOverrideUrlLoading(view, s);
             }
 
             @Override
@@ -71,7 +67,10 @@ public class MainActivity extends AppCompatActivity
                     view.loadUrl(s);
                     return true;
                 }else{
-                    return false;
+                    Intent intent = new Intent(MainActivity.this, WebActivity.class);
+                    intent.putExtra(WebActivityFragment.WEBFRAGMENT_ARG, s);
+                    startActivity(intent);
+                    return true;
                 }
             }
         });

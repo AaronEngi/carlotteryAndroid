@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'kassistant'
             keyPassword 'shuitian456'
-            storeFile file('C:/src/st.jks')
+            storeFile file('e:/src/st.jks')
             storePassword 'shuitian123'
         }
     }
